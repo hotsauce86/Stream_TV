@@ -1,0 +1,65 @@
+{# search.html.twig
+TIM TIERNEY
+	This file provies the template to allow a user to search for the name of a show or actor
+#}
+
+{% include 'header.twig' %}
+<style>
+	table, tr, th, td { border: 1px solid black !important; }
+	td, th {padding: .4em;}
+		.id { text-align: center; }
+		.title { text-align: center; }
+		
+</style>
+
+<h1>Search</h1>
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+
+{% if showresults %}
+	<table>
+		<tr>
+		<th class="showID">showID</th>
+		<th class="title">Title</th>
+		
+		</tr>
+	{% for item in showresults %}
+		<tr>
+		<td class="showID"><a href="/streamTV/shows/{{item.showID}}">{{item.showID}}</a></td>
+		<td class="name">{{ item.title }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+
+{% else %}
+	<h3>No shows match</h3>
+{% endif %}
+
+ <br></br>
+
+
+{% if actorresults %}
+ 	<table>
+		<tr>
+		<th class="actID">actID</th>
+		<th class="fname">FirstName</th>
+		<th class="lname">LastName</th>
+		</tr>
+	{% for item in actorresults %}
+		<tr>
+		<td class="actID"><a href="/streamTV/actor/{{item.actID}}">{{item.actID}}</a></td>
+		<td class="fname">{{ item.fname }}</td>
+		<td class="lname">{{ item.lname }}</td>
+		
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<h3>No actors match</h3>
+{% endif %}
+
+
+
+{% include 'footer.twig' %}

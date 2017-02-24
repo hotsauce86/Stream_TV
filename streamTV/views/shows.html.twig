@@ -1,0 +1,82 @@
+{# shows.html.twig
+TIM TIERNEY
+	This file provides the template for displaying a details for a specific show
+	in the database.  It sets up the table style, and then builds the html code
+	for the table of information about the show
+#}
+
+{% include 'header.twig' %}
+<style>
+table, tr, th, td { border: 0px !important; }
+td, th {padding: .4em;}
+.id { text-align: center; }
+.name { text-align: center; }
+.price { text-align: right; }
+</style>
+{% if results %}
+<h1>{{results[0].title}}</h1>
+
+<h3>View <a href="/streamTV/episodes/{{episodes.showID}}">all episoded</a></h3>
+<table>
+	<tr>
+	<td class="attr">Title</td>
+	<td class="value">${{results[0].title}</td>
+	</tr><tr>
+	<td class="attr">Network</td>
+	<td class="value">{{results[0].network}}</td>
+	</tr><tr>
+	<td class="attr">Creator</td>
+	<td class="value">{{results[0].creator}}</td>
+	</tr><tr>
+	<td class="attr">Catagory</td>
+	<td class="value">{{results[0].catagory}}</td>
+	</tr><tr>
+	<td class="attr">Created_in</td>
+	<td class="value">{{results[0].premiere_year}}</td>
+
+	</tr>
+</table>
+
+<br></br>
+
+{% if maincastresults %}
+<h3>actors in main cast</h3>
+<table>
+	<tr>
+	<th class="attr">FirstName</th>
+	<th class="attr">LastName</th>
+	<th class="attr">Role</th>
+	</tr>
+		{% for item in maincastresults %}
+		<tr>
+		<td class="value"><a href="/streamTV/actor/{{ maincastresults.actID }}">{{maincastresults.fname}}</a></td>
+		<td class="value"><a href="/streamTV/actor/{{ maincastresults.actID }}">{{maincastresults.lname}}</a></td>
+		<td class="value">{{main_cast.role}}</td>
+
+		{% endif %}
+</table>
+
+
+{% endif %}
+<br></br>
+
+<h3>actors in recurring cast</h3>
+<table>
+	<tr>
+	<th class="attr">FirstName</th>
+	<th class="attr">LastName</th>
+	<th class="attr">Role</th>
+	<th class="attr">Nummber_of_appearances</th>
+	</tr>
+
+	<tr>
+	<td class="value"><a href="/streamTV/actor/{{ actor.actID }}">{{actor.fname}}</a></td>
+	<td class="value"><a href="/streamTV/actor/{{ actor.actID }}">{{actor.lname}}</a></td>
+	<td class="value">{{recurring_cast.role}}</td>
+	<td class="value">{{}}
+</table>
+
+
+{% endif %}
+
+{% include 'footer.twig' %}

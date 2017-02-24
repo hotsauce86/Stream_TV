@@ -1,0 +1,34 @@
+{# queue.html.twig
+TIM TIERNEY
+	This file provides the template for displaying a details for a specific EPISODE
+	in the database.  It sets up the table style, and then builds the html code
+	for the table of information about the toy.
+#}
+
+{% include 'header.twig' %}
+<style>
+table, tr, th, td { border: 0px !important; }
+td, th {padding: .4em;}
+.id { text-align: center; }
+.name { text-align: center; }
+.price { text-align: right; }
+</style>
+{% if results %}
+
+
+
+<table>
+	<tr>
+	<td class="attr">Show</td>
+	<td class="value">{{cust_queue.showID}}</td>
+	</tr><tr>
+	<td class="attr">Dste_Queued</td>
+	<td class="value">{{cust_queue.datequeued}}</td>
+	</tr>
+
+<table>
+
+
+{% endif %}
+
+{% include 'footer.twig' %}

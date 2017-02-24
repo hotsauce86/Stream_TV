@@ -1,0 +1,36 @@
+{# item.html.twig
+TIM TIERNEY
+	This file provides the template for displaying a details for a specific EPISODE
+	in the database.  It sets up the table style, and then builds the html code
+	for the table of information about the toy.
+#}
+
+{% include 'header.twig' %}
+<style>
+table, tr, th, td { border: 0px !important; }
+td, th {padding: .4em;}
+.id { text-align: center; }
+.name { text-align: center; }
+.price { text-align: right; }
+</style>
+{% if results %}
+<h1>Details for {{results[0].fname}}</h1>
+
+<table>
+<tr>
+<td class="attr">actID</td>
+<td class="value">${{results[0].actID}}</td>
+</tr><tr>
+<td class="attr">first_name</td>
+<td class="value">{{results[0].fname}}</td>
+</tr><tr>
+<td class="attr">last_name</td>
+<td class="value">{{results[0].lname}}</td>
+</tr>
+
+<table>
+
+
+{% endif %}
+
+{% include 'footer.twig' %}
